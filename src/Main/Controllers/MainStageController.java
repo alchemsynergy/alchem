@@ -2,13 +2,17 @@ package Main.Controllers;
 
 import Main.Controllers.Retailers.ViewSaleController;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -20,6 +24,7 @@ public class MainStageController implements Initializable {
     private static double drawableStageWidth;
     private static double drawableStageHeight;
 
+
     AnchorPane homePane = null;
     AnchorPane allFeaturesPane = null;
     AnchorPane dashboardPane = null;
@@ -29,9 +34,9 @@ public class MainStageController implements Initializable {
     TranslateTransition closeNavigation = null;
 
     @FXML
-    private Button pane_button1, pane_button2, pane_button21, pane_button3, pane_button4;
+    private Button pane_button1, pane_button2, pane_button21, pane_button3, pane_button4,pane_button5;
     @FXML
-    private Pane pane1, pane2, pane21, pane3, pane4;
+    private Pane pane1, pane2, pane21, pane3, pane4, pane5;
     @FXML
     private StackPane switcher_pane;
     @FXML
@@ -54,21 +59,23 @@ public class MainStageController implements Initializable {
         drawableStageHeight = switcher_pane.getHeight();
 
         /*Assign Buttons and Panes to their array references apply respective CSS styles*/
-        Button[] buttons = new Button[5];
+        Button[] buttons = new Button[6];
         buttons[0] = pane_button1;
         buttons[1] = pane_button2;
         buttons[2] = pane_button3;
         buttons[3] = pane_button4;
         buttons[4] = pane_button21;
+        buttons[5] = pane_button5;
 
-        Pane[] panes = new Pane[5];
+        Pane[] panes = new Pane[6];
         panes[0] = pane1;
         panes[1] = pane2;
         panes[2] = pane3;
         panes[3] = pane4;
         panes[4] = pane21;
+        panes[5] = pane5;
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             /*Make 'i' effectively final*/
             int finalI = i;
             buttons[i].setOnMouseEntered((event) -> {
@@ -149,5 +156,21 @@ public class MainStageController implements Initializable {
             closeNavigation.play();
         }
     }
-}
 
+    public void viewAppLaunch() {
+        try {
+            /*Opening login page*/
+            FXMLLoader fxmlMainStage = new FXMLLoader(getClass().getResource("../../Resources/Layouts/login_stage.fxml"));
+            Parent root1 = (Parent) fxmlMainStage.load();
+            Stage mainStage = new Stage();
+            mainStage.setScene(new Scene(root1));
+            mainStage.show();
+
+            /*Closing the present window*/
+            ((Stage) pane_button5.getScene().getWindow()).close();
+        }
+        catch(Exception e){
+            System.out.println(e.toString());
+        }
+    }
+}
