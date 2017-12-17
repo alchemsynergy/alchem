@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 
-<AnchorPane prefHeight="714.0" prefWidth="1208.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.Controllers.MainStageController">
+<AnchorPane prefHeight="714.0" prefWidth="1208.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.Controllers.MainStageController">
     <children>
         <StackPane fx:id="switcher_pane" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -53,13 +55,26 @@
                         </Button>
                     </children>
                 </Pane>
-                <Pane fx:id="pane3" prefHeight="45.0" prefWidth="41.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="0.0">
+                <Pane fx:id="pane3" prefHeight="45.0" prefWidth="41.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="0.0">
                     <children>
                         <Button fx:id="pane_button3" mnemonicParsing="false" onAction="#viewUserDrawer" prefHeight="40.0" prefWidth="31.0" style="-fx-background-color: #200020;">
                             <graphic>
                                 <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../Assets/user.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </Pane>
+                <Pane fx:id="pane5" prefHeight="45.0" prefWidth="41.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="0.0">
+                    <children>
+                        <Button fx:id="pane_button5" mnemonicParsing="false" onAction="#viewAppLaunch" prefHeight="40.0" prefWidth="31.0" style="-fx-background-color: #200020;">
+                            <graphic>
+                                <ImageView fitHeight="30.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../Assets/logout.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -79,6 +94,7 @@
                         </Button>
                     </children>
                 </Pane>
+
             </children>
         </AnchorPane>
     </children>
