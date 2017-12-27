@@ -660,8 +660,10 @@ public class AddPurchaseController {
                 Iterator<Purchase_history> billingHistoryIterator = search_bill_table_list.iterator();
                 while (billingHistoryIterator.hasNext()) {
                     Purchase_history bill = billingHistoryIterator.next();
-                    if (BillNoLong == bill.getSearchBillNo() && WholesalerName.equals(bill.getSearchWholesaler())) {
+                    if (BillNoLong == bill.getSearchBillNo() ) {
                         bill.setSearchAmount(totalAmount);
+                        bill.setSearchDate(Date);
+                        bill.setSearchWholesaler(WholesalerName);
                     }
                 }
                 ObservableList<Purchase_history> temporary_add_sale_data = FXCollections.observableArrayList(search_bill_table_list);

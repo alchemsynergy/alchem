@@ -40,6 +40,7 @@ public class LoginController {
     public void initialize() {
         wholesaler_toggle.setUserData("Wholesaler");
         retailer_toggle.setUserData("Retailer");
+
         setOnKeyPressedListener();
     }
 
