@@ -17,9 +17,10 @@ import java.util.ResourceBundle;
 
 public class MainStageController implements Initializable {
 
+
     private static double drawableStageWidth;
     private static double drawableStageHeight;
-
+    private int f0,f1,f2,f3,f4;
     AnchorPane homePane = null;
     AnchorPane allFeaturesPane = null;
     AnchorPane dashboardPane = null;
@@ -52,6 +53,7 @@ public class MainStageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         /*Set private static variables for Main Stage width and Height*/
+
         drawableStageWidth = switcher_pane.getWidth();
         drawableStageHeight = switcher_pane.getHeight();
 
@@ -70,6 +72,13 @@ public class MainStageController implements Initializable {
         panes[3] = pane4;
         panes[4] = pane21;
 
+
+        f0 = 0;
+        f1 = 0;
+        f2 = 0;
+        f3 = 0;
+        f4 = 0;
+
         for (int i = 0; i < 5; i++) {
             /*Make 'i' effectively final*/
             int finalI = i;
@@ -82,8 +91,45 @@ public class MainStageController implements Initializable {
 
             buttons[i].setOnMouseExited((event) -> {
                 /*Set CSS styling for buttons and panes 'onMouseEntered'*/
-                buttons[finalI].setStyle("-fx-background-color: #200020");
-                panes[finalI].setStyle("-fx-background-color: #200020");
+                int flag;
+                int i1=finalI;
+                if(i1==0)
+                    flag = f0;
+                else if(i1==1)
+                    flag = f1;
+                else if(i1==2)
+                    flag = f2;
+                else if(i1==3)
+                    flag = f3;
+                else
+                    flag = f4;
+                if(flag==0) {
+                    buttons[finalI].setStyle("-fx-background-color: #200020");
+                    panes[finalI].setStyle("-fx-background-color: #200020");
+                }
+            });
+
+            buttons[i].setOnMouseClicked((event) -> {
+                /*Set CSS styling for buttons and panes 'onMouseEntered'*/
+
+                int i1=finalI;
+                if(i1==0)
+                    f0 = 1;
+                else if(i1==1)
+                    f1 = 1;
+                else if(i1==2)
+                    f2 = 1;
+                else if(i1==3)
+                    f3 = 1;
+                else
+                    f4 = 1;
+                for(int k=0;k<5;k++){
+                    if(k!=finalI){
+                        buttons[k].setStyle("-fx-background-color: #200020");
+                        panes[k].setStyle("-fx-background-color: #200020");
+                    }
+
+                }
 
             });
 

@@ -10,7 +10,7 @@ public class JDBC {
         try {
             Class.forName("org.postgresql.Driver");
             dbConnection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/AlchemDB",
-                    "postgres", "123456");
+                    "postgres", "prince123");
         } catch (Exception e) {
             e.printStackTrace();
         }
