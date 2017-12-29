@@ -134,40 +134,78 @@ public class InventoryController {
                 }
             }
         });
+
+    }
+
+    public boolean linearCompare(String a,String b){
+
+        int p = 1;
+        int r = 0;
+        for(int i = 0;i < a.length();i++){
+            if(p == 1) {
+                r = 0;
+                for (int j = 0; j < b.length(); j++) {
+                    if (b.charAt(j) != a.charAt(j + i)) {
+                        r = 1;
+                        break;
+                    }
+                }
+                if (r == 0)
+                    break;
+                else
+                    p = 0;
+            }
+            if(a.charAt(i)==' ')
+                p = 1;
+        }
+        if(r == 0)
+            return true;
+        else
+            return false;
     }
 
     public void searchTable() {
+
         filteredData = new FilteredList<>(medicines, e -> true);
+
         searchField.setOnKeyPressed(e -> {
             searchField.textProperty().addListener((observable, oldValue, newValue) -> {
                 filteredData.setPredicate((Predicate<? super Medicine>) medicine -> {
+
+
                     if (newValue == null || newValue.isEmpty()) {
                         return true;
                     }
                     String lowerCaseFilter = newValue.toLowerCase();
                     String codeChk = Integer.toString(medicine.getCode());
-                    if (codeChk.contains(newValue) && searchGroup.getSelectedToggle().getUserData().toString().equals("Code")) {
+
+
+                    if (linearCompare(codeChk, newValue) && searchGroup.getSelectedToggle().getUserData().toString().equals("Code")) {
                         return true;
-                    } else if (medicine.getName().toLowerCase().contains(lowerCaseFilter) && searchGroup.getSelectedToggle().getUserData().toString().equals("Medicine")) {
+                    } else if (linearCompare(medicine.getName().toLowerCase(), lowerCaseFilter) && searchGroup.getSelectedToggle().getUserData().toString().equals("Medicine")) {
                         return true;
-                    } else if (medicine.getSalt().toLowerCase().contains(lowerCaseFilter) && searchGroup.getSelectedToggle().getUserData().toString().equals("Salt")) {
+                    } else if (linearCompare(medicine.getSalt().toLowerCase(), lowerCaseFilter) && searchGroup.getSelectedToggle().getUserData().toString().equals("Salt")) {
                         return true;
-                    } else if (medicine.getCompany().toLowerCase().contains(lowerCaseFilter) && searchGroup.getSelectedToggle().getUserData().toString().equals("Company")) {
+                    } else if (linearCompare(medicine.getCompany().toLowerCase(), lowerCaseFilter) && searchGroup.getSelectedToggle().getUserData().toString().equals("Company")) {
                         return true;
-                    } else if (medicine.getBatch().toLowerCase().contains(lowerCaseFilter) && searchGroup.getSelectedToggle().getUserData().toString().equals("Batch Number")) {
+                    } else if (linearCompare(medicine.getBatch().toLowerCase(), lowerCaseFilter) && searchGroup.getSelectedToggle().getUserData().toString().equals("Batch Number")) {
                         return true;
-                    } else if (medicine.getType().toLowerCase().contains(lowerCaseFilter) && searchGroup.getSelectedToggle().getUserData().toString().equals("Type")) {
+                    } else if (linearCompare(medicine.getType().toLowerCase(), lowerCaseFilter) && searchGroup.getSelectedToggle().getUserData().toString().equals("Type")) {
                         return true;
-                    } else if (medicine.getHsn().toLowerCase().contains(lowerCaseFilter) && searchGroup.getSelectedToggle().getUserData().toString().equals("HSN Number")) {
+                    } else if (linearCompare(medicine.getHsn().toLowerCase(), lowerCaseFilter) && searchGroup.getSelectedToggle().getUserData().toString().equals("HSN Number")) {
                         return true;
                     }
                     return false;
+
+
+
                 });
             });
             SortedList<Medicine> searchedData = new SortedList<Medicine>(filteredData);
             searchedData.comparatorProperty().bind(medicineTableView.comparatorProperty());
             medicineTableView.setItems(searchedData);
         });
+
     }
 
     public void disableVisibilityAdvancedSearch() {
