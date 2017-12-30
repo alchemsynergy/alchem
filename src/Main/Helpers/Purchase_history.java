@@ -21,6 +21,10 @@ public class Purchase_history {
         return searchWholesaler.get();
     }
 
+    public void setSearchWholesaler(String searchWholesaler) {
+        this.searchWholesaler.set(searchWholesaler);
+    }
+
     public long getSearchBillNo() {
         return searchBillNo.get();
     }
