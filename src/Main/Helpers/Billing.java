@@ -28,6 +28,7 @@ public class Billing {
         this.billItem = new SimpleStringProperty(billItem);
         this.billBatch = new SimpleStringProperty(billBatch);
         this.billQuantity = new SimpleIntegerProperty(billQuantity);
+         System.out.println("");
         this.check=check;
     }
 
