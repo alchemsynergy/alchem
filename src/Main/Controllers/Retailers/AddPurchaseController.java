@@ -120,6 +120,7 @@ public class AddPurchaseController {
         try {
             Connection dbConnection = JDBC.databaseConnect();
             Statement sqlStatement = dbConnection.createStatement();
+             System.out.println("");
             ResultSet searchTableResultSet = sqlStatement.executeQuery("SELECT wholesaler_name,bill_no,date,total_amount FROM retailer_purchase_bill where user_access_id='" + UserInfo.accessId + "'");
             while (searchTableResultSet.next()) {
                 search_bill_table_list.add(new Purchase_history(searchTableResultSet.getString("wholesaler_name"), searchTableResultSet.getLong("bill_no"), searchTableResultSet.getString("date"), searchTableResultSet.getFloat("total_amount")));
