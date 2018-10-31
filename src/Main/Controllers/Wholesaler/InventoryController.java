@@ -180,6 +180,7 @@ public class InventoryController {
         String name, salt, company, type, batch, hsn, expiry;
         float mrp, cost;
         medicines = FXCollections.observableArrayList();
+         System.out.println("");
 
         try {
             Connection dbConnection = JDBC.databaseConnect();
