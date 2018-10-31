@@ -128,6 +128,7 @@ public class LoginController{
             main_pane.getChildren().setAll(stackPane);
             FadeTransition fadeIn=new FadeTransition(Duration.seconds(2),stackPane);
             fadeIn.setFromValue(0);
+            System.out.println("");
             fadeIn.setToValue(1);
             fadeIn.setCycleCount(1);
 
