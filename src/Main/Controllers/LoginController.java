@@ -77,6 +77,8 @@ public class LoginController{
             new AlertBox(ApplicationLauncher.primaryStage, fxmlLoader, false, "Fill in the missing fields");
         } else {
             try {
+                //The username and password are not blank so we can setup a database call
+                System.out.println('In else');
                 Connection dbConnection = JDBC.databaseConnect();
                 PreparedStatement pstmt=dbConnection.prepareStatement("SELECT * FROM user_access WHERE username= ? and password=? ");
                 pstmt.setString(1,loginUsername);
